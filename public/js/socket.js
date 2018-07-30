@@ -9,7 +9,7 @@ function webSocket()
         ws.onopen = function()
         {
             ws.send("发送数据123");
-            alert("数据发送中...");
+            console.log("数据发送中...");
         };
 
         ws.onmessage = function (evt)
