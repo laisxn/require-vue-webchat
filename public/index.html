@@ -1,23 +1,30 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>require-vue-webchat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-<div id="sse">
-    <a href="#">运行</a>
+<div class="wc-chat">
+    <div class="wc-show" id="words">
+        <div class="other-talk"><span id="other">准备。。。</span></div>
+        <div class="own-talk"><span id="own">好</span></div>
+    </div>
+    <div class="wc-input">
+        <input type="text" class="wc-words" id="wcwords">
+        <input type="button" value="发送" class="wc-sub" id="wcsub">
+    </div>
 </div>
 </body>
 <script data-main="js/main" src="js/require.js"></script>
 <script src="js/main.js"></script>
 <script>
-    require(["jquery", "vue"],function($, vue){
+    require(["ws", "jquery", "vue"],function(ws, $, vue){
         console.log($, vue);
-        $(function(){
-            alert("load finished");
-        })
+        webSocket()
     })
 </script>
 </html>
