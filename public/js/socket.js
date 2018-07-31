@@ -1,34 +1,55 @@
-function webSocket()
-{
-    if ("WebSocket" in window)
-    {
-        console.log("您的浏览器支持 WebSocket!");
+var config = {
+    server_url : "ws://119.23.237.171:9501"
+}
+var ws = {
 
-        var ws = new WebSocket("ws://119.23.237.171:9501");
+    server : null,
+    title : {},
+    content : {},
 
-        ws.onopen = function()
-        {
-            ws.send("发送数据123");
-            console.log("数据发送中...");
-        };
+    init : function () {
+      console.log('初始化');
+      this.server = new WebSocket(config.server_url);
+      this.title = '正在建立连接';
+      this.open();
+      this.message();
+      this.close();
+      this.setTitle(this.title);
+    },
 
-        ws.onmessage = function (evt)
-        {
-            var received_msg = evt.data;
-            console.log(evt);
-            alert("数据已接收...");
-        };
+    open : function () {
+        this.server.onopen = function () {
+            this.title = '连接成功';
+            ws.setTitle(this.title);
+            console.log('连接成功');
+        }
+    },
 
-        ws.onclose = function()
-        {
-            // 关闭 websocket
-            alert("连接已关闭...");
-        };
+    message : function () {
+        this.server.onmessage = function (evt) {
+            this.title = '收到消息';
+            ws.setTitle(this.title);
+            this.content = JSON.stringify(evt.data)
+            console.log(this.content)
+        }
+    },
+
+    close : function () {
+        this.server.onclose = function () {
+            this.title = '连接已断开';
+            ws.setTitle(this.title);
+            console.log('连接已断开');
+        }
+    },
+
+    send : function (msg) {
+        this.server.send(msg);
+    },
+
+    setTitle : function (title) {
+        $('#title').html(title);
+        //var aaa = new Vue({});
+        //console.log(aaa)
     }
 
-    else
-    {
-        // 浏览器不支持 WebSocket
-        alert("您的浏览器不支持 WebSocket!");
-    }
 }

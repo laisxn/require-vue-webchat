@@ -10,8 +10,14 @@
 <body>
 <div class="wc-chat">
     <div class="wc-show" id="words">
-        <div class="other-talk"><span id="other">准备。。。</span></div>
-        <div class="own-talk"><span id="own">好</span></div>
+        <label for="title" id="title">{{title}}</label>
+        <div class="other-talk"><span class="other">准备。。。</span></div>
+        <div class="own-talk"><span class="own">好</span></div>
+        <div class="other-talk"><span class="other">准备。。。</span></div>
+        <div class="own-talk"><span class="own">好</span></div>
+        <div class="other-talk"><span class="other">准备。。。</span></div>
+        <div class="own-talk"><span class="own">好</span></div>
+
     </div>
     <div class="wc-input">
         <input type="text" class="wc-words" id="wcwords">
@@ -22,9 +28,19 @@
 <script data-main="js/main" src="js/require.js"></script>
 <script src="js/main.js"></script>
 <script>
-    require(["ws", "jquery", "vue"],function(ws, $, vue){
-        console.log($, vue);
-        webSocket()
+    require(["jquery", "vue", "ws"], function($, Vue, ws){
+        $(function () {
+            if ("WebSocket" in window) {
+                console.log('支持websocket')
+                ws.init();
+                $('#wcsub').click(function () {
+                    ws.send($('#wcwords').val().trim());
+                })
+            } else {
+                console.log('不支持websocket')
+            }
+        })
     })
+
 </script>
 </html>
