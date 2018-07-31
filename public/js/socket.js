@@ -15,6 +15,7 @@ define(["jquery", "vue"], function ($, Vue) {
             this.open();
             this.message();
             this.close();
+            this.error();
             this.setTitle(this.title);
         },
 
@@ -42,6 +43,13 @@ define(["jquery", "vue"], function ($, Vue) {
                 ws.setTitle(this.title);
                 console.log('连接已断开');
             }
+        },
+
+        error : function() {
+            this.server.onerror = function (e) {
+                console.log(e);
+                console.log('Error occured: ' + e.data);
+            };
         },
 
         send : function (msg) {
