@@ -45,7 +45,6 @@ define(["jquery", "vue"], function ($, Vue) {
         },
 
         send : function (msg) {
-            $('#words').append('<div class="own-talk"><span class="own">' + msg + '</span></div>');
             this.server.send(msg);
         },
 

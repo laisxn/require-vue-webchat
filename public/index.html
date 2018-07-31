@@ -27,14 +27,30 @@
             if ("WebSocket" in window) {
                 console.log('支持websocket')
                 ws.init();
+
+                $(document).keydown(function(event){
+                    if(event.keyCode ==13){
+                        sendMsg();
+                    }
+                });
                 $('#wcsub').click(function () {
-                    var send_msg = $('#wcwords').val().trim();
-                    ws.send(send_msg);
+                    sendMsg();
                 })
+
+                function sendMsg() {
+                    var msg = $('#wcwords').val().trim();
+                    if (msg) {
+                        ws.send(msg);
+                        $('#words').append('<div class="own-talk"><span class="own">' + msg + '</span></div>');
+                        $('#wcwords').val('');
+                    }
+                }
+
             } else {
                 console.log('不支持websocket')
             }
         })
+
     })
 
 </script>
