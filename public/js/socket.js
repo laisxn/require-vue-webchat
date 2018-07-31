@@ -31,9 +31,9 @@ define(["jquery", "vue"], function ($, Vue) {
             this.server.onmessage = function (evt) {
                 this.title = '通信中';
                 ws.setTitle(this.title);
-                this.content = JSON.stringify(evt.data)
+                this.content = evt['data'];
                 $('#words').append('<div class="other-talk"><span class="other">' + this.content + '</span></div>');
-                console.log(this.content)
+                console.log(evt)
             }
         },
 
@@ -48,7 +48,7 @@ define(["jquery", "vue"], function ($, Vue) {
         error : function() {
             this.server.onerror = function (e) {
                 console.log(e);
-                console.log('Error occured: ' + e.data);
+                console.log('Error occured: ' + e['data']);
             };
         },
 
