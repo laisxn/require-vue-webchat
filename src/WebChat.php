@@ -34,7 +34,7 @@ class WebChat
 
         $this->table->set($request->fd, $user);
 
-        $this->pushMsgForOther($server, $request->fd, 'open', $user['fd'] . '：' . $user['name'], $user);
+        $this->pushMsgForOther($server, $request->fd, 'open', $user['name'] . '进来了', $user);
     }
 
     public function message(swoole_websocket_server  $server, $frame)

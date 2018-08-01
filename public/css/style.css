@@ -62,3 +62,15 @@ body{
     color:#fff;
     padding:5px 10px;
 }
+.wc-in {
+    text-align: center;
+    font-size: 1px;
+    font-style: italic;
+    color: #ef8201;
+}
+.wc-out {
+    text-align: center;
+    font-size: 1px;
+    font-style: italic;
+    color: red;
+}

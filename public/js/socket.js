@@ -32,7 +32,13 @@ define(["jquery", "vue"], function ($, Vue) {
                 this.title = '通信中';
                 ws.setTitle(this.title);
                 this.content = JSON.parse(e['data']);
-                $('#words').append('<div class="other-talk"><span class="other">' + this.content.msg + '</span></div>');
+                var class_name = 'other-talk';
+                if (this.content.type == 'open') {
+                    class_name = "wc-in";
+                } else if (this.content.type == 'close') {
+                    class_name = "wc-out";
+                }
+                $('#words').append('<div class="' + class_name + '"><span class="other">' + this.content.msg + '</span></div>');
                 console.log(this.content)
             }
         },
