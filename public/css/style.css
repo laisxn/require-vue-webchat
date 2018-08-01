@@ -74,3 +74,8 @@ body{
     font-style: italic;
     color: red;
 }
+.wc-title {
+    margin-top: 10px;
+    text-align: center;
+    color: cornflowerblue;
+}
