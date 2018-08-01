@@ -1,6 +1,6 @@
 define(["jquery", "vue"], function ($, Vue) {
     var config = {
-        server_url : "ws://127.0.0.1:9503"
+        server_url : "ws://119.23.237.171:9503"
     }
     var ws = {
 
