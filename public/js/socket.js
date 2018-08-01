@@ -1,6 +1,6 @@
 define(["jquery", "vue"], function ($, Vue) {
     var config = {
-        server_url : "ws://119.23.237.171:9501"
+        server_url : "ws://119.23.237.171:9503"
     }
     var ws = {
 
@@ -28,12 +28,12 @@ define(["jquery", "vue"], function ($, Vue) {
         },
 
         message : function () {
-            this.server.onmessage = function (evt) {
+            this.server.onmessage = function (e) {
                 this.title = '通信中';
                 ws.setTitle(this.title);
-                this.content = evt['data'];
-                $('#words').append('<div class="other-talk"><span class="other">' + this.content + '</span></div>');
-                console.log(evt)
+                this.content = JSON.parse(e['data']);
+                $('#words').append('<div class="other-talk"><span class="other">' + this.content.msg + '</span></div>');
+                console.log(this.content)
             }
         },
 
