@@ -64,6 +64,10 @@ define(["jquery", "vue"], function ($, Vue) {
 
         setTitle : function (title) {
             $('#title').html(title);
+        },
+        
+        reconnect : function () {
+            this.init();
         }
 
     }
