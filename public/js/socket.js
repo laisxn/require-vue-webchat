@@ -1,12 +1,13 @@
 define(["jquery", "vue"], function ($, Vue) {
     var config = {
-        server_url : "ws://119.23.237.171:9503"
+        server_url : "ws://127.0.0.1:9503"
     }
     var ws = {
 
         server : null,
         title : {},
         content : {},
+		checkHeart : false,
 
         init : function () {
             console.log('初始化');
@@ -17,6 +18,7 @@ define(["jquery", "vue"], function ($, Vue) {
             this.close();
             this.error();
             this.setTitle(this.title);
+			ws.checkHeart = false;
         },
 
         open : function () {
@@ -48,6 +50,7 @@ define(["jquery", "vue"], function ($, Vue) {
                 this.title = '连接已断开';
                 ws.setTitle(this.title);
                 console.log('连接已断开');
+				ws.checkHeart = true;
             }
         },
 
@@ -55,6 +58,7 @@ define(["jquery", "vue"], function ($, Vue) {
             this.server.onerror = function (e) {
                 console.log(e);
                 console.log('Error occured: ' + e['data']);
+				ws.checkHeart = true;
             };
         },
 
