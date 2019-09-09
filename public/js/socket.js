@@ -7,7 +7,7 @@ define(["jquery", "vue"], function ($, Vue) {
         server : null,
         title : {},
         content : {},
-		checkHeart : false,
+	checkHeart : false,
 
         init : function () {
             console.log('初始化');
