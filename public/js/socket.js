@@ -18,7 +18,7 @@ define(["jquery", "vue"], function ($, Vue) {
             this.close();
             this.error();
             this.setTitle(this.title);
-			ws.checkHeart = false;
+	    ws.checkHeart = false;
         },
 
         open : function () {
@@ -50,7 +50,7 @@ define(["jquery", "vue"], function ($, Vue) {
                 this.title = '连接已断开';
                 ws.setTitle(this.title);
                 console.log('连接已断开');
-				ws.checkHeart = true;
+		ws.checkHeart = true;
             }
         },
 
@@ -58,7 +58,7 @@ define(["jquery", "vue"], function ($, Vue) {
             this.server.onerror = function (e) {
                 console.log(e);
                 console.log('Error occured: ' + e['data']);
-				ws.checkHeart = true;
+		ws.checkHeart = true;
             };
         },
 
