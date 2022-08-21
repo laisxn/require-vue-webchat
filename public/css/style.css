@@ -79,3 +79,9 @@ body{
     text-align: center;
     color: cornflowerblue;
 }
+.wc-time {
+    text-align: center;
+    font-size: 1px;
+    font-style: italic;
+    color: #c8bfbf;
+}

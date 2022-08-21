@@ -1,13 +1,13 @@
 define(["jquery", "vue"], function ($, Vue) {
     var config = {
         server_url : "ws://127.0.0.1:9503"
-    }
+    };
     var ws = {
 
         server : null,
         title : {},
         content : {},
-	checkHeart : false,
+	    checkHeart : false,
 
         init : function () {
             console.log('初始化');
@@ -18,7 +18,7 @@ define(["jquery", "vue"], function ($, Vue) {
             this.close();
             this.error();
             this.setTitle(this.title);
-	    ws.checkHeart = false;
+	        ws.checkHeart = false;
         },
 
         open : function () {
@@ -40,7 +40,9 @@ define(["jquery", "vue"], function ($, Vue) {
                 } else if (this.content.type == 'close') {
                     class_name = "wc-out";
                 }
+                $('#words').append('<div class="wc-time"><span class="other">' + this.content.data.time + '</span></div>');
                 $('#words').append('<div class="' + class_name + '"><span class="other">' + this.content.msg + '</span></div>');
+                $('#words').scrollTop = $('#words').scrollHeight;
                 console.log(this.content)
             }
         },
@@ -50,7 +52,7 @@ define(["jquery", "vue"], function ($, Vue) {
                 this.title = '连接已断开';
                 ws.setTitle(this.title);
                 console.log('连接已断开');
-		ws.checkHeart = true;
+		        ws.checkHeart = true;
             }
         },
 
@@ -58,7 +60,7 @@ define(["jquery", "vue"], function ($, Vue) {
             this.server.onerror = function (e) {
                 console.log(e);
                 console.log('Error occured: ' + e['data']);
-		ws.checkHeart = true;
+		    ws.checkHeart = true;
             };
         },
 
@@ -74,8 +76,8 @@ define(["jquery", "vue"], function ($, Vue) {
             this.init();
         }
 
-    }
+    };
 
     return ws;
 
-})
+});

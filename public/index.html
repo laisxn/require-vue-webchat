@@ -46,6 +46,7 @@
                         ws.send(msg);
                         $('#words').append('<div class="own-talk"><span class="own">' + msg + '</span></div>');
                         $('#wcwords').val('');
+                        $('#words').scrollTop = $('#words').scrollHeight
                     }
                 }
 
