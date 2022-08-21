@@ -2,7 +2,7 @@
 namespace WebChat;
 
 
-class ConfigTest {
+class Config {
 
     public static $database = [
         'mysql' => [
