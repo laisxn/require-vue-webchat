@@ -1,6 +1,6 @@
-define(["jquery", "vue"], function ($, Vue) {
+define(["jquery", "vue", "app"], function ($, Vue) {
     var config = {
-        server_url : "ws://127.0.0.1:9503"
+        server_url : server_url
     };
     var ws = {
 
